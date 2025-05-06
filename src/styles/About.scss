@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+$maroon: #800000;
+
+.about-section {
+  background-color: #fdfdfd;
+  padding: 5rem 2rem;
+  position: relative;
+}
+
+/* Bottom border accent */
+.about-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: rgba(128, 0, 0, 0.1);
+}
+
+/* Section Title Header */
+.about-section .about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.about-section .about-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  color: #111;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.about-section .about-header h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: $maroon;
+  margin: 1rem auto 0;
+}
+
+/* Grid layout */
+.about-section .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: start;
+  position: relative;
+}
+
+/* Vertical dividers */
+.about-section .about-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 33.33%;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(128, 0, 0, 0.15);
+}
+
+.about-section .about-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 66.66%;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(128, 0, 0, 0.1);
+}
+
+/* Section subheaders */
+.about-section .section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: $maroon;
+  position: relative;
+  margin-bottom: 1.25rem;
+  text-align: left; /* <- FIXED HERE */
+}
+
+.about-section .section-label::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: $maroon;
+  margin-top: 0.5rem;
+}
+
+/* Body text */
+.about-section p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333;
+  font-family: 'Lora', serif;
+}
+
+.about-section p .highlight {
+  color: $maroon;
+  font-weight: 500;
+}
+
+/* Project carousel styling */
+.project-carousel {
+  text-align: left; /* <- FIXED alignment */
+  
+  .carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+
+    .carousel-btn {
+      background: none;
+      border: 2px solid $maroon;
+      color: $maroon;
+      font-size: 2rem;
+      padding: 0.25rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $maroon;
+        color: #fff;
+      }
+    }
+
+    .carousel-img-link {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+
+      img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
+    }
+  }
+}
+
+/* Extra styling */
+.highlight-key {
+  color: $maroon;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.highlight-verb {
+  color: $maroon;
+  font-weight: 600;
+  font-style: italic;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($maroon, 10%);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .about-section::after {
+    display: none;
+  }
+
+  .about-section .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section .about-grid::before,
+  .about-section .about-grid::after {
+    display: none;
+  }
+
+  .about-section .section-label {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .about-section p {
+    font-size: 1.05rem;
+  }
+
+  .about-section .about-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-section .about-header h1::after {
+    width: 60px;
+  }
+
+  .project-carousel .carousel-wrapper {
+    flex-direction: column;
+
+    .carousel-btn {
+      font-size: 1.5rem;
+    }
+
+    .carousel-img-link {
+      max-width: 100%;
+    }
+  }
+}

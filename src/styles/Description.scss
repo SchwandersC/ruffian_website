@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+$maroon: #800000;
+
+.description-section {
+  background: #fafafa;
+  padding: 4rem 2rem;
+
+  h2 {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background-color: $maroon;
+      margin: 1rem auto 0;
+    }
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .description-block {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    border-top: 4px solid $maroon;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+      color: $maroon;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.5px;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: $maroon;
+        margin-top: 0.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #333;
+      line-height: 1.7;
+      font-family: 'Lora', serif;
+    }
+  }
+}

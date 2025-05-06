@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+$maroon: #800000;
+
+.main-section {
+  background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.6)
+              ),
+              url('../assets/hero-image-2.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; // ⬅️ This is the key for scroll-over effect
+  min-height: 100vh;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  color: white;
+
+  .main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .main-text {
+    max-width: 750px;
+    padding: 2rem;
+
+    p {
+      font-size: 4rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-family: 'Lora', serif;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .subheading {
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      margin-bottom: 2.5rem;
+      color: #ccc;
+      font-family: 'IBM Plex Mono', monospace;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 1s ease-out 0.5s forwards;
+    }
+
+    .main-cta-buttons {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+
+      .btn {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .learn-more {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 2px solid #fff;
+
+        &:hover {
+          background-color: #fff;
+          color: #000;
+        }
+      }
+
+      .contact-us {
+        background-color: $maroon;
+        color: #fff;
+
+        &:hover {
+          background-color: darken($maroon, 10%);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background-attachment: scroll; // fallback for mobile Safari
+  }
+
+  .main-content {
+    justify-content: center;
+  }
+
+  .main-text {
+    padding: 0;
+
+    p {
+      font-size: 2.4rem;
+    }
+
+    .subheading {
+      font-size: 1.1rem;
+    }
+
+    .main-cta-buttons {
+      justify-content: center;
+    }
+  }
+}
