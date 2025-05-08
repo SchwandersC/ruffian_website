@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora&display=swap');
+$maroon: #800000;
+
+.projects-section {
+  padding: 4rem 2rem;
+  background: #fafafa;
+  text-align: center;
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    letter-spacing: 1px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 4px;
+      background-color: $maroon;
+      margin: 1rem auto 0;
+    }
+  }
+
+  .block-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .info-block {
+    background: white;
+    border-top: 4px solid $maroon;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    padding: 3rem 4rem;
+    font-size: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    color: $maroon;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .content-box {
+    background: white;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: relative;
+
+    h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: $maroon;
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+
+      &:hover {
+        color: $maroon;
+      }
+    }
+  }
+}
+.project-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .project-modal {
+    background: white;
+    max-width: 520px;
+    width: 90%;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    font-family: 'Lora', serif;
+    position: relative;
+    text-align: left;
+  
+    h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: $maroon;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #333;
+    }
+  
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+  
+      &:hover {
+        color: $maroon;
+      }
+    }
+  }
+  

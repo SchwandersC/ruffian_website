@@ -3,6 +3,8 @@ import Main from './components/Main';
 import About from './components/About';
 import Description from './components/Description';
 import Contact from './components/Contact';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
 import './styles/App.scss';
 import './styles/Navbar.scss';
 import Logo from './assets/ruffian_logo.png';
@@ -42,13 +44,17 @@ const App: React.FC = () => {
           <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
           <li><a href="#description" onClick={() => setMenuOpen(false)}>Description</a></li>
           <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+          <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
+
         </ul>
       </nav>
 
       <Main />
       <About />
       <Description />
+      <Projects/>
       <Contact />
+      <Footer />
     </div>
   );
 };
