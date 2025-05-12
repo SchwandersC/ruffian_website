@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Navbar.scss';
-import Logo from '../assets/ruffian_logo.png';
+import Logo from '../assets/ruffian_logo_1.png';
 
 const NavBar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);

@@ -42,7 +42,7 @@ $maroon: #800000;
       font-family: 'Lora', serif;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     }
-
+    
     .subheading {
       font-size: 1.3rem;
       font-weight: 400;
@@ -129,3 +129,33 @@ $maroon: #800000;
     }
   }
 }
+.program-badge {
+    position: absolute;
+    bottom: 0.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.1rem 1.25rem;
+    border-left: 4px solid $maroon;
+    border-radius: 6px;
+    text-align: center;
+    width: fit-content;
+    max-width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+    a {
+      color: $maroon;
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  

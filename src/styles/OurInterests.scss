@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora&display=swap');
+
+$maroon: #800000;
+
+.interests-section {
+  background-color: #fdfdfd;
+  padding: 5rem 2rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: rgba(128, 0, 0, 0.1);
+  }
+
+  .interests-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: #111;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: $maroon;
+      margin: 1rem auto 0;
+    }
+  }
+
+  .subheading {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .interest-text-block {
+    text-align: left;
+
+    h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      color: $maroon;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .interest-icon {
+      color: $maroon;
+      font-size: 1.2rem;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: rgba(128, 0, 0, 0.2);
+      margin: 0.5rem 0 1rem;
+    }
+
+    p {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+  }
+}

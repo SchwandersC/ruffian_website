@@ -247,71 +247,245 @@ $maroon: #800000;
     }
   }
   
-  /* Modal Overlay */
   .project-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
   }
   
-  /* Modal Box */
   .project-modal {
-    background: white;
-    max-width: 520px;
-    width: 90%;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    width: 85%;
+    max-width: 420px;
+    max-height: 80vh; // ✅ Limits modal height
+    overflow-y: auto; // ✅ Enables vertical scroll when needed
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+    text-align: center;
     font-family: 'Lora', serif;
     position: relative;
-    text-align: left;
+    animation: scaleIn 0.3s ease-in-out;
   
     h3 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
+      font-size: 1.75rem;
       color: $maroon;
       margin-bottom: 1rem;
     }
   
     p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: #333;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #444;
     }
   
     .close-btn {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-size: 1.5rem;
       background: none;
       border: none;
-      color: #aaa;
+      color: #999;
       cursor: pointer;
   
       &:hover {
         color: $maroon;
       }
     }
+    &::-webkit-scrollbar {
+        width: 6px;
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+      }
   }
   
-  /* Responsive Modal */
-  @media (max-width: 600px) {
-    .project-modal {
-      padding: 1.5rem;
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
   
+  @keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .cta-wrapper {
+    margin-top: 1.5rem;
+    text-align: left;
+  
+    .cta-text {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      color: #333;
     }
   
-    .project-carousel .carousel-description p {
-      padding: 0;
+    .cta-button {
+      padding: 0.6rem 1.4rem;
+      background-color: #800000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #a00000;
+      }
+    }
+  }
+    
+  .team-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+  
+    .team-member {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  
+      .member-info {
+        font-size: 1.05rem;
+        color: #333;
+  
+        strong {
+          display: block;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.25rem;
+          color: $maroon;
+          margin-bottom: 0.25rem;
+        }
+  
+        .member-contact {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+  
+          a {
+            text-decoration: none;
+            font-size: 1.25rem;
+            color: $maroon;
+  
+            &:hover {
+              color: darken($maroon, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+  .team-modal {
+    max-height: 80vh;
+    overflow-y: auto;
+  
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+  
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+  
+      img,
+      .avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #555;
+        font-family: 'Bebas Neue', sans-serif;
+      }
+  
+      div {
+        line-height: 1.5;
+  
+        strong {
+          font-size: 1.1rem;
+          color: $maroon;
+        }
+  
+        a {
+          display: block;
+          color: #333;
+          text-decoration: none;
+          font-size: 0.95rem;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+  
+        p {
+          margin: 0.25rem 0;
+        }
+      }
+    }
+  }
+  .linkedin-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.25rem;
+    color: $maroon;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+  
+    &:hover {
+      color: darken($maroon, 10%);
+    }
+  }
+  .values-card {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+    }
+  
+    .values-image {
+      background-size: cover;
+      background-position: center;
+      height: 260px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .values-text-overlay {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: $maroon;
+      border-radius: 8px;
+      backdrop-filter: blur(3px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
   }
   
