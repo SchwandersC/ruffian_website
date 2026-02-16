@@ -117,18 +117,29 @@ $maroon: #800000;
     padding: 0;
 
     p {
-      font-size: 2.4rem;
+      font-size: 1.8rem; // ⬅️ smaller for mobile, change from 2.4rem
     }
 
     .subheading {
-      font-size: 1.1rem;
+      font-size: 0.95rem; // ⬅️ a bit smaller too
     }
 
     .main-cta-buttons {
       justify-content: center;
+
+      .btn {
+        font-size: 0.95rem; // ⬅️ shrink button text too
+        padding: 0.8rem 1.5rem;
+      }
     }
   }
+
+  .program-badge {
+    font-size: 0.75rem; // ⬅️ make footer badge more compact
+    padding: 0.1rem 1rem;
+  }
 }
+
 .program-badge {
     position: absolute;
     bottom: 0.2rem;

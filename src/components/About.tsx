@@ -1,52 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/About.scss';
-import project1 from '../assets/med_device.jpg';
-import project2 from '../assets/ai_processes.jpg';
-import project3 from '../assets/tennis_tech.jpg';
-import valuesImage from '../assets/dawn-landscape-mountains.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-
-const projectSlides = [
-  {
-    src: project1,
-    alt: 'Bio Medical Product Development',
-    title: 'Bio Medical Product Development',
-    description:
-      'We’ve designed products that provide cutting edge technology where it’s needed most. The spirit of innovation drives everything we do — and we’re just getting started.',
-  },
-  {
-    src: project2,
-    alt: 'Process Optimization',
-    title: 'Process Optimization',
-    description:
-      'We don’t just make things faster—we make them smarter. From manufacturing to machine learning workflows, we’ve helped teams streamline operations, eliminate bottlenecks, and scale with confidence.',
-  },
-  {
-    src: project3,
-    alt: 'Sports Technology',
-    title: 'Sports Technology',
-    description:
-      'What started as a love for the game turned into a playground for innovation. From NCAA scouting tools to sports safety products, we’re reshaping how athletes train and compete.',
-  },
-];
+import valuesImage from '../assets/dawn-landscape-mountains.jpg';
+import charlieHead from '../assets/charlie_head.jpg';
+import jackFace from '../assets/jack_face.jpg';
+import shannonFace from '../assets/shannon_face.jpg';
+import laraFace from '../assets/lara_face.jpg';
+import samFace from '../assets/sam_face.jpg';
+import victoriaFace from '../assets/victoria_face.jpg';
+import lukeFace from '../assets/luke_face.jpg';
+import lewisFace from '../assets/lewis_face.jpg';
 
 const teamMembers = [
   {
-    name: 'Charlie Neuenschwander',
-    email: 'charlie.neuenschwander@ruffian.net',
-    linkedin: 'https://www.linkedin.com/in/charlie-neuen/',
-    image: 'https://media.licdn.com/dms/image/v2/D5603AQHUX7XrKos4rw/profile-displayphoto-shrink_200_200/B56ZZ41MMaGoAg-/0/1745783932062?e=1752105600&v=beta&t=N1iLJugJNxH6hx8d_NJ5057mx80xCvO8KGeG6yNXu_s',
-    role: 'ML/Process Engineer',
+    name: 'Lewis Holmberg',
+    email: 'lewis.holmberg@ruffian.net',
+    linkedin: 'https://www.linkedin.com/in/lewis-holmberg-a972701bb',
+    image: lewisFace,
+    role: 'Founder, CEO',
   },
-  { name: 'Anna Arntsen', email: 'anna.arntsen@ruffian.net', linkedin: '', image: '', role: 'Developer' },
-  { name: 'Grifyn Marcaccini', email: 'grifyn.marcaccini@ruffian.net', linkedin: '', image: '', role: 'Engineer' },
-  { name: 'Jack Walde', email: 'jack.walde@ruffian.net', linkedin: '', image: '', role: 'Business' },
-  { name: 'Lara Herlah', email: 'lara.herlah@ruffian.net', linkedin: '', image: '', role: 'Biomedical Engineer' },
-  { name: 'Lewis Holmberg', email: 'lewis.holmberg@ruffian.net', linkedin: '', image: '', role: 'Founder, Lead Engineer' },
-  { name: 'Sam Hanson', email: 'sam.hanson@ruffian.net', linkedin: '', image: '', role: 'Sales' },
-  { name: 'Shannon Bussing', email: 'shannon.bussing@ruffian.net', linkedin: '', image: '', role: 'Chemical Engineer' },
+  {
+    name: 'Lara Herlah',
+    email: 'lara.herlah@ruffian.net',
+    linkedin: 'https://www.linkedin.com/in/lara-herlah',
+    image: laraFace,
+    role: 'COO',
+  },
+  {
+    name: 'Jack Walde',
+    email: 'jack.walde@ruffian.net',
+    linkedin: 'https://www.linkedin.com/in/jack-walde',
+    image: jackFace,
+    role: 'CSMO',
+  },
+  {
+    name: 'Charlie Neuenschwander',
+    email: 'caneuenschwander@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/charlie-neuen',
+    image: charlieHead,
+    role: 'President',
+  }
+
 ];
+
+
+
 
 const About: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,8 +54,7 @@ const About: React.FC = () => {
   const [showTeamModal, setShowTeamModal] = useState(false);
   const [showMissionModal, setShowMissionModal] = useState(false);
 
-  const handleNext = () => setCurrentIndex((prev) => (prev + 1) % projectSlides.length);
-  const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + projectSlides.length) % projectSlides.length);
+
 
   const handleOpenModal = () => {
     setActiveModalIndex(currentIndex);
@@ -68,12 +66,7 @@ const About: React.FC = () => {
     setActiveModalIndex(null);
   };
 
-  useEffect(() => {
-    if (!modalOpen) {
-      const interval = setInterval(handleNext, 8000);
-      return () => clearInterval(interval);
-    }
-  }, [modalOpen]);
+  
 
   return (
     <section id="about" className="about-section">
@@ -85,13 +78,13 @@ const About: React.FC = () => {
         <div>
           <h2 className="section-label">Who Are We?</h2>
           <p>
-            We're <strong>Ruffian</strong> — a scrappy, hands-on team of engineers who don’t just consult — 
-            we <span className="highlight-verb">build</span>. We design, prototype, and launch our own 
-            products, and bring that same builder mindset to the companies we work with.
+           We're <strong>Ruffian</strong> — An applied research and development group focused on discovering
+           and developing high-impact product opportunities in biomedicine and sports to improve lives.
+
           </p>
           <div className="cta-wrapper">
             <button className="cta-button" onClick={() => setShowTeamModal(true)}>
-              Meet Our Team
+              Meet Our Executive Team
             </button>
           </div>
         </div>
@@ -99,11 +92,9 @@ const About: React.FC = () => {
         <div>
           <h2 className="section-label">What Do We Do?</h2>
           <p>
-            We split our time between developing our own <strong>innovations</strong> and partnering
-            with teams to solve technical problems and bring new ideas to life. Whether it’s your product
-            or ours, we bring <span className="highlight-verb">hustle</span>,
-            <span className="highlight-verb"> precision</span>, and
-            <span className="highlight-verb"> practicality</span> to the table.
+          Our team combines engineering and business expertise to rigorously evaluate 
+          opportunities, and efficiently move from idea to product through fast, focused iteration.
+
           </p>
           <div className="cta-wrapper">
             <button
@@ -172,7 +163,13 @@ const About: React.FC = () => {
             <button className="close-btn" onClick={() => setShowMissionModal(false)}>×</button>
             <h3>Our Values</h3>
             <p>
-              Ruffian was founded by a group of young engineers driven by a desire to create truly impactful products. Instead of shying away from our youth, we've allowed it to vitalize everything we do. Our driving force is our relentless pursuit of innovation. We partner with organizations that have the same ethos of hard work and innovation.
+            We exist to turn ambitious ideas into products that create meaningful impact. 
+            </p>
+            <p>
+            We believe that creative thinking, paired with disciplined evaluation and execution, can lead to products that improve and save lives.
+            </p>
+            <p>
+            At the core of who we are is creative thinking. We take the creative act seriously, approaching each product with intention and commitment to providing the greatest good we can to the world.
             </p>
           </div>
         </div>

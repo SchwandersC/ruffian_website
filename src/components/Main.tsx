@@ -14,15 +14,7 @@ const Main: React.FC = () => (
       </div>
     </div>
 
-    <div className="program-badge">
-      <a
-        href="https://www.mcgill.ca/dobson/entrepreneurship-programs/entrepreneurial-women-lean-startup"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Participant in the Entrepreneurial Women Lean Startup Accelerator
-      </a>
-    </div>
+
   </section>
 );
 

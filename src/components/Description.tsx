@@ -30,7 +30,7 @@ const Description: React.FC = () => (
       </div>
     </div>
     <p className="description-tagline">
-    Above all else, we bring a spirit of <strong>invention</strong> that no other group of engineers can match.
+    Above all else, we bring an unbridled spirit of <strong>invention</strong>.
   </p>
 
   <div className="cta-wrapper" style={{ textAlign: 'center', marginTop: '1.5rem' }}>

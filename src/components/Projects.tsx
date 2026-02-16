@@ -1,90 +1,99 @@
-import React, { useState } from 'react';
-import '../styles/Projects.scss';
+import React, { useEffect, useState } from "react";
+import "../styles/Projects.scss";
+import { Link } from "react-router-dom";
+import { PROJECTS, type Project } from "../data/projects";
 
-import pendingImg from '../assets/blueprints.jpg';
-import consultingImg from '../assets/handshake.jpg';
+const AUTO_ROTATE_MS = 6500;
 
 const Projects: React.FC = () => {
-  const [activeContent, setActiveContent] = useState<null | 'patents' | 'consulting'>(null);
+  const projects: Project[] = PROJECTS;
 
-  const contentMap = {
-    patents: {
-      title: 'Patent Portfolio',
-      description: [
-        'Innovation for Medical Devices including a rotatable shaft to allow for optimal control.',
-        'Invention to prevent concussions in high-impact sports through dynamic neck support.',
-        'Invention to strengthen and rehabilitate wrists for racket-sport athletes.',
-      ],
-    },
-    consulting: {
-      title: 'Consulting',
-      description: [
-        ['Ticket Entry Automation for Tickets For Kids.', 'https://drive.google.com/file/d/1G7Z_0lVMd2cwqQlT7TZhJp6dk4mZ8lSG/view?usp=sharing'],
-        ['Advanced Player Archetype Scouting tool for NCAA coaching clients.', 'https://github.com/SchwandersC/NCAA_Advanced_Archetypes'],
-      ] as [string, string][],
-    },
-  };
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  const images = {
-    patents: pendingImg,
-    consulting: consultingImg,
-  };
+  // Safety: if projects array ever changes length, keep index valid
+  useEffect(() => {
+    if (index >= projects.length) setIndex(0);
+  }, [index, projects.length]);
 
-  const closeModal = () => setActiveContent(null);
-  const active = activeContent ? contentMap[activeContent] : null;
+  const next = () => setIndex((i) => (i + 1) % projects.length);
+  const prev = () => setIndex((i) => (i - 1 + projects.length) % projects.length);
+  const goTo = (i: number) => setIndex(i);
+
+  useEffect(() => {
+    if (paused || projects.length <= 1) return;
+    const t = window.setInterval(next, AUTO_ROTATE_MS);
+    return () => window.clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused, projects.length]);
+
+  if (!projects.length) return null;
+
+  const active = projects[index];
 
   return (
     <section id="projects" className="projects-section">
-      <h2>Our Work</h2>
-      <div className="block-container">
-        {(['patents', 'consulting'] as const).map((key) => (
-          <div
-            key={key}
-            className="info-block with-image"
-            style={{ backgroundImage: `url(${images[key]})` }}
-            onClick={() => setActiveContent(key)}
-          >
-            <div className="info-text-blur">{contentMap[key].title}</div>
-          </div>
-        ))}
-      </div>
+      <h2>Our Latest Projects</h2>
 
-      {active && (
-        <div className="project-modal-overlay" onClick={closeModal}>
-          <div className="project-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal}>×</button>
-            <h3>{active.title}</h3>
-            <div className="modal-scroll-content">
-              <ul>
-                {active.title === 'Consulting'
-                  ? (active.description as [string, string][]).map(([text, url], i) => (
-                      <li key={i}>
-                        <a href={url} target="_blank" rel="noreferrer">{text}</a>
-                      </li>
-                    ))
-                  : (active.description as string[]).map((text, i) => <li key={i}>{text}</li>)
-                }
-              </ul>
+      <div
+        className="projects-carousel"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <button
+          className="carousel-btn left"
+          onClick={prev}
+          aria-label="Previous project"
+          type="button"
+        >
+          ‹
+        </button>
 
-              <div className="modal-cta">
-                <p>Curious about what other projects we're working on?</p>
-                <button
-                  className="cta-button"
-                  onClick={() => {
-                    closeModal();
-                    setTimeout(() => {
-                      const contactSection = document.getElementById('contact');
-                      contactSection?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  }}
-                >
-                  Get In Touch
-                </button>
+        <div
+          className="carousel-window"
+          style={{
+            backgroundImage: active.image ? `url(${active.image})` : undefined,
+          }}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Projects carousel"
+        >
+          <div className="carousel-overlay">
+            <div className="carousel-card">
+              <h3>{active.title}</h3>
+              <p>{active.shortDescription}</p>
+
+              <div className="carousel-cta">
+                <Link className="cta-button" to={`/projects/${active.slug}`}>
+                  Click to Learn More
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      )}
+
+        <button
+          className="carousel-btn right"
+          onClick={next}
+          aria-label="Next project"
+          type="button"
+        >
+          ›
+        </button>
+      </div>
+
+      <div className="carousel-dots" aria-label="Carousel pagination">
+        {projects.map((p, i) => (
+          <button
+            key={p.slug}
+            className={`dot ${i === index ? "active" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={`Go to ${p.title}`}
+            aria-current={i === index ? "true" : "false"}
+            type="button"
+          />
+        ))}
+      </div>
     </section>
   );
 };

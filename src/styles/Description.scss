@@ -84,4 +84,45 @@ $maroon: #800000;
     margin-right: auto;
     line-height: 1.6;
   }
+  @media (max-width: 768px) {
+    .description-section {
+      padding: 3rem 1.5rem;
+  
+      h2 {
+        font-size: 2.2rem;
+  
+        &::after {
+          width: 50px;
+          height: 3px;
+        }
+      }
+  
+      .description-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+  
+      .description-box {
+        padding: 1.5rem;
+  
+        h3 {
+          font-size: 1.5rem;
+        }
+  
+        ul li {
+          font-size: 1rem;
+        }
+      }
+  
+      .description-tagline {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+      }
+  
+      .cta-button {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+      }
+    }
+  }
   

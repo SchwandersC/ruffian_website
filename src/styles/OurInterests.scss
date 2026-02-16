@@ -90,3 +90,54 @@ $maroon: #800000;
     }
   }
 }
+@media (max-width: 768px) {
+  .interests-section {
+    padding: 3rem 1.5rem;
+
+    &::after {
+      display: none;
+    }
+
+    .interests-heading {
+      font-size: 2.2rem;
+      text-align: center;
+
+      &::after {
+        width: 60px;
+      }
+    }
+
+    .subheading {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .interests-grid {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+
+    .interest-text-block {
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .interest-icon {
+        font-size: 1rem;
+      }
+    }
+
+    .cta-wrapper {
+      text-align: center;
+    }
+
+    .cta-button {
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+  }
+}

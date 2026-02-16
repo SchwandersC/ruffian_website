@@ -1,38 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import Main from './components/Main';
-import About from './components/About';
-import Description from './components/Description';
-import Contact from './components/Contact';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
-import OurInterests from './components/OurInterests';
-import './styles/App.scss';
-import './styles/Navbar.scss';
-import Logo from './assets/Ruffian_cropped_logo_2.png'; //home/schwandersc/workspace/ruffian_website/src/assets/Ruffian Logos 5.8.25-11.PNG
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import ProjectPage from "./pages/ProjectPage";
+
+import "./styles/App.scss";
+import "./styles/Navbar.scss";
+import Logo from "./assets/Ruffian_cropped_logo_2.png";
+
+
+// GLOBAL scroll-to-top handler
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant", // use "auto" if TS complains
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="app-container">
-      <nav className={`app-nav ${isScrolled ? 'scrolled' : ''}`}>
+
+      {/* This fixes scroll position when navigating between routes */}
+      <ScrollToTop />
+
+      <nav className={`app-nav ${isScrolled ? "scrolled" : ""}`}>
         <div className="nav-logo">
-          <a href="#main">
+          <Link to="/" onClick={() => setMenuOpen(false)}>
             <img src={Logo} alt="Ruffian logo" />
-          </a>
+          </Link>
         </div>
 
         <div
-          className={`hamburger ${menuOpen ? 'open' : ''}`}
+          className={`hamburger ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span />
@@ -40,22 +57,44 @@ const App: React.FC = () => {
           <span />
         </div>
 
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#main" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-          <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-          <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+          <li>
+            <a href="/#main" onClick={() => setMenuOpen(false)}>
+              Home
+            </a>
+          </li>
 
+          <li>
+            <a href="/#about" onClick={() => setMenuOpen(false)}>
+              About
+            </a>
+          </li>
+
+          <li>
+            <a href="/#projects" onClick={() => setMenuOpen(false)}>
+              Projects
+            </a>
+          </li>
+
+          <li>
+            <a href="/#contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <Main />
-      <About />
-      <OurInterests />
-      <Description />
-      <Projects/>
-      <Contact />
-      <Footer />
+
+      <Routes>
+
+        {/* Homepage */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* Individual project pages */}
+        <Route path="/projects/:slug" element={<ProjectPage />} />
+
+      </Routes>
+
     </div>
   );
 };

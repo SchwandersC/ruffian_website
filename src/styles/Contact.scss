@@ -95,3 +95,44 @@ $maroon: #800000;
     color: red;
   }
 }
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1.5rem;
+
+    h2 {
+      font-size: 2.2rem;
+
+      &::after {
+        width: 50px;
+        height: 3px;
+      }
+    }
+
+    .contact-form {
+      padding: 1.5rem;
+      gap: 1.25rem;
+
+      label {
+        font-size: 1rem;
+
+        input,
+        textarea {
+          font-size: 0.95rem;
+          padding: 0.65rem;
+        }
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 0.5rem 1.25rem;
+      }
+    }
+
+    .success,
+    .error {
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+  }
+}
